@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service TransactionParser {
+  rpc Parse (ParseTransactionsExportRequest) returns (ParseTransactionsExportReply);
+}
+
+message TransactionsExportMetaData {
+  string file_name = 1
+}
+
+message TransactionsExport {
+  TransactionsExportMetaData meta_data = 1;
+  bytes data = 2;
+}
+
+message ParseTransactionsExportRequest {
+  TransactionsExport transactions_export = 1;
+}
+
+message ParseTransactionsExportReply {
+  bool success = 1;
+  
+}
